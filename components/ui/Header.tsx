@@ -10,7 +10,13 @@ export default function Header() {
 				<div className="flex justify-between items-center">
 					<div className="logo w-3/12">
 						<Link href={`/`}>
-							<Image src={`/logo.webp`} width={171} height={100} alt="logo" />
+							<Image
+								src={`/logo.webp`}
+								width={171}
+								height={100}
+								alt="logo"
+								style={{ height: "auto", width: "auto" }}
+							/>
 						</Link>
 					</div>
 
@@ -32,7 +38,10 @@ export default function Header() {
 					</div>
 
 					<div className="header-items flex justify-end items-center gap-5 w-4/12">
-						<Link href={`tel:0984041242`} className="hotline flex items-center border border-red-500 rounded relative min-h-[4.5rem]">
+						<Link
+							href={`tel:0984041242`}
+							className="hotline flex items-center border border-red-500 rounded relative min-h-[4.5rem]"
+						>
 							<div className="h-10 w-10 absolute -left-4 top-3 border border-red-500 rounded-full p-2 bg-white">
 								<Phone color="rgb(239 68 68)" />
 							</div>
@@ -41,7 +50,10 @@ export default function Header() {
 								<p className="text-red-500 font-bold">0984041242</p>
 							</div>
 						</Link>
-						<Link href={`/gio-hang`} className="cart hotline flex items-center border border-red-500 rounded relative min-h-[4.5rem]">
+						<Link
+							href={`/gio-hang`}
+							className="cart hotline flex items-center border border-red-500 rounded relative min-h-[4.5rem]"
+						>
 							<div className="h-10 w-10 absolute -left-4 top-3 border border-red-500 rounded-full p-2 bg-white">
 								<ShoppingBasket color="rgb(239 68 68)" />
 							</div>
