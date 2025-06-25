@@ -6,7 +6,7 @@ import PostStyle1 from "@/components/widget/PostStyle1";
 
 export default async function HomePage() {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/products`,
+		`${process.env.NEXT_PUBLIC_BASE_URL || "https://computer-demo-13.vercel.app"}/api/products`,
 		{
 			cache: "no-store", // nếu muốn luôn lấy dữ liệu mới
 		}
