@@ -3,8 +3,11 @@ import prisma from "@/lib/prisma";
 import fs from "fs/promises";
 import path from "path";
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
+    
+}
 
+export async function POST(req: NextRequest) {
     if (req) {
 
         const formData = await req.formData();

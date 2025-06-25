@@ -45,7 +45,7 @@ export default async function AdminProducts() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {products?.map((product, index) => (
+                    {/* {products?.map((product, index) => (
                         <TableRow key={index}>
                             <TableCell className="w-1">
                                 <Input className="h-4" type="checkbox" value={product.id} />
@@ -59,7 +59,7 @@ export default async function AdminProducts() {
                                 <ActionButton id={product.id} deleteRequestUrl="/api/admin/products" />
                             </TableCell>
                         </TableRow>
-                    ))}
+                    ))} */}
                 </TableBody>
             </Table>
 

@@ -1,109 +1,27 @@
-import Navigation from "@/components/ui/Navigation"
-import ProductStyle7 from "@/components/widget/ProductStyle7"
-import ProductStyle6 from "@/components/widget/ProductStyle6"
-
-import prisma from "@/lib/prisma"
-import { Product } from "@/lib/types"
+import Navigation from "@/components/ui/Navigation";
+import ProductStyle7 from "@/components/widget/ProductStyle7";
+import ProductStyle6 from "@/components/widget/ProductStyle6";
+import Banner from "@/components/widget/Banner";
+import PostStyle1 from "@/components/widget/PostStyle1";
 
 export default async function HomePage() {
+	const response = await fetch(
+		`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/products`,
+		{
+			cache: "no-store", // nếu muốn luôn lấy dữ liệu mới
+		}
+	);
+	const data = await response.json();
+	const products = data.products;
 
-    // const style7Products = [
-    //     {
-    //         id: 1,
-    //         title: 'CPU INTEL Core i7-12700 (12C/20T, 4.90 GHz, 25MB) - 1700',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-    //     {
-    //         id: 1,
-    //         title: 'iPhone 9',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-    //     {
-    //         id: 1,
-    //         title: 'iPhone 9',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-    //     {
-    //         id: 1,
-    //         title: 'iPhone 9',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-    //     {
-    //         id: 1,
-    //         title: 'iPhone 9',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-    //     {
-    //         id: 1,
-    //         title: 'iPhone 9',
-    //         slug: 'iphone-9',
-    //         description: 'An apple mobile which is nothing like apple',
-    //         content: 'An apple mobile which is nothing like appleAn apple mobile which is nothing like appleAn apple mobile which is nothing like apple',
-    //         image: '',
-    //         price: '599',
-    //     },
-
-    // ] as Product[]
-
-    let style7Products: any | null = null;
-
-    try {
-        style7Products = await prisma.product.findMany({
-            where: {
-                products_categories: {
-                    some: {
-
-                    }
-                }
-            }
-        }) as Product[]
-    } catch (error) {
-        console.log(error);
-    }
-
-
-    let style6Products: any | null = null;
-
-    try {
-        style6Products = await prisma.product.findMany({
-            where: {
-                products_categories: {
-                    some: {
-
-                    }
-                }
-            }
-        }) as Array<Product>
-    } catch (error) {
-        console.log(error);
-    }
-
-
-    return (
-        <>
-            <Navigation />
-            <ProductStyle7 products={style7Products} />
-            <ProductStyle6 products={style6Products} />
-        </>
-    )
+	return (
+		<>
+			<Navigation />
+			<ProductStyle7 products={products} />
+			<ProductStyle6 products={products} />
+			<Banner src="/uploads/banners/banner4.webp" />
+			<ProductStyle6 products={products} />
+			<PostStyle1 />
+		</>
+	);
 }

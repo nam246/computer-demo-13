@@ -7,6 +7,8 @@ import BarChart from "@/components/ui/charts/BarChart";
 import LineChart from "@/components/ui/charts/LineChart";
 import DoughnutChart from "@/components/ui/charts/DoughnutChart";
 
+import TextEditor from "@/components/admin/tinymce"
+
 export default function AdminDashboad() {
 
     const Data = [
@@ -61,9 +63,13 @@ export default function AdminDashboad() {
         ]
     });
 
+    const [formData, setFormData] = useState({})
+
     return (
         <>
             <AdminHeader title="Dashboard" btn={{ isShow: false, url: '', btnValue: 'Add' }} />
+
+            <TextEditor formData={formData} setFormData={setFormData} />
 
             <div className="" style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px"}}>
                 <BarChart chartData={chartData} />
