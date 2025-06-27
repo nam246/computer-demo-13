@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-
+type Params = Promise<{ slug: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 // Hàm giả lập lấy dữ liệu sản phẩm theo slug
 async function getProductBySlug(slug: string) {
 	// TODO: Thay bằng fetch thực tế từ API hoặc DB
@@ -15,12 +16,14 @@ async function getProductBySlug(slug: string) {
 	return null;
 }
 
-export default async function SingleProductPage({
-	params,
-}: {
-	params: { slug: string };
+export default async function SingleProductPage(props: {
+	params: Params;
+	searchParams: SearchParams;
 }) {
-	const { slug } = await params;
+	const params = await props.params;
+	const searchParams = await props.searchParams;
+	const slug = params.slug;
+	const query = searchParams.query;
 	const product = await getProductBySlug(slug);
 	if (!product) return notFound();
 
