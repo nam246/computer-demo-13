@@ -8,10 +8,10 @@ export default function ProductCard({ product }: { product: Product }) {
 	return (
 		<MotionFadeUp>
 			<div className="border rounded-lg p-4 shadow hover:shadow-lg transition group">
-				{product.image ? (
+				{product.thumbnail ? (
 					<div className="w-full h-96 rounded mb-4 overflow-hidden">
 						<Image
-							src={process.env.NEXT_PUBLIC_BASE_URL + product.image.url}
+							src={process.env.NEXT_PUBLIC_BASE_URL + product.thumbnail.url}
 							alt={product.title}
 							width={500}
 							height={500}
